@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" ng-app="bilalApp">
+  <head>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <link rel="stylesheet" href="resources/css/tether/tether.min.css" />
+    <link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="resources/css/dashboard.css" />
+
+        
+  </head>
+  <body>
+
+<body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Dashboard</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li><a href="Book/farms">Farm</a></li>
+                    <li><a href="#/products">Products</a></li>
+                    <li><a href="#/tags">Tags</a></li>
+                    <li><a href="#/animals">Animals</a></li>
+                    <li><a href="#/expenseType">Expense Type</a></li>
+                    <li><a href="#/expense">Expense</a></li>
+                    <li><a href="#/stock">Stock</a></li>
+                    <li><a href="#/feedUsed">Feed Used</a></li>
+                    <li><a href="#/prices">Animal Prices</a></li>
+          </ul>
+        </nav>
+
+        
+
+        
+
+      </div>
+    </div>
+<div ng-view></div>
+    
+
+
+    <script src="resources/js/tether/tether.min.js"></script>
+    <script src="resources/js/jquery/jquery-1.12.0.min.js"></script>
+    <script src="resources/js/bootstrap/bootstrap.js"></script>
+    <script src="resources/js/angular/angular.js"></script>
+    <script src="resources/js/angular/angular-route.js"></script>
+
+
+    <script src="resources/app/app.js"></script>
+    <script src="resources/app/user-controllers.js"></script>
+    <script src="resources/app/dashboard-controllers.js"></script>
+
+    
+  </body>
+</html>

@@ -1,0 +1,31 @@
+[
+    {        
+        "id": "1", 
+        "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg", 
+        "name": "tahir", 
+        "email": "test",
+        "password": "test"
+    },
+    {        
+        "id": "2", 
+        "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg", 
+        "name": "bilal", 
+        "email": "bilal",
+        "password": "bilal"
+    },
+    {        
+        "id": "3", 
+        "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg", 
+        "name": "umair", 
+        "email": "umair",
+        "password": "umair"
+    },
+    {        
+        "id": "4", 
+        "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg", 
+        "name": "admin", 
+        "email": "admin",
+        "password": "admin"
+    }
+
+]
