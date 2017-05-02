@@ -1,5 +1,6 @@
 <div>
-    <div class="container" style="overflow-x:scroll;">
+
+    <div class="container" style="overflow-x:scroll;" ng-if="showForm !== true">
         <table  class="users table table-bordered">
             <thead>
             <tr>
@@ -42,35 +43,35 @@
         <form>
             <div class="form-group">
                 <label for="UserName">User Name</label>
-                <input type="text" id="UserName" class="form-control"  placeholder="UserName" ng-model="userData.UserName">
+                <input type="hidden" id="userId" placeholder="UserName" ng-model="userData.id">
+                <input type="text" id="UserName" class="form-control"  placeholder="UserName" ng-model="userData.username">
             </div>
 
             <div class="form-group">
                 <label for="Password">User Paasword</label>
-                <input type="text" id="Password" class="form-control"  placeholder="Password" ng-model="userData.Password">
+                <input type="text" id="Password" class="form-control"  placeholder="Password" ng-model="userData.password">
             </div>
 
             <div class="form-group">
                 <label for="Name">Name</label>
-                <input type="text" id="Name" class="form-control"  placeholder="Name" ng-model="userData.Name">
+                <input type="text" id="Name" class="form-control"  placeholder="Name" ng-model="userData.name">
             </div>
 
             <div class="form-group ">
                 <label for="Email">User Email</label>
-                <input type="text" id="Email" class="form-control"  placeholder="Email" ng-model="userData.Email">
+                <input type="text" id="Email" class="form-control"  placeholder="Email" ng-model="userData.email">
             </div>
-
-            <button type="submit" class="btn btn-success" ng-click="onClickOption()">Submit</button>
-            <button type="submit" class="btn btn-primary" ng-click="addUser()">Add User</button>
-            <button type="submit" class="btn btn-success" ng-click="upDateUser()">Submit</button>
-            <button type="submit" class="btn btn-info" ng-click="onClickOption()">Info</button>
-            <button type="submit" class="btn btn-danger" ng-click="deleteUser()">Delete</button>
-
+            <div  ng-if="showForm == true">
+                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+            </div>
         </form>
     </div>
     <br>
     <div  ng-if="showForm !== true">
+        <button type="submit" class="btn btn-primary" ng-click="addUser()">Add User</button>
         <button type="submit" class="btn btn-primary" ng-click="editUser()">Edit</button>
+        <button type="submit" class="btn btn-primary" ng-click="deleteUser()">Delete</button>
+
     </div>
 </div>
 <style>
