@@ -14,6 +14,14 @@
                 templateUrl:"customer.jsp",
                 controller:"CustomerCtrl"
             })
+            .when("/company",{
+                templateUrl:"company.jsp",
+                controller:"companyCtrl"
+            })
+            .when("/farm",{
+                templateUrl:"farm.jsp",
+                controller:"farmCtrl"
+            })
             .otherwise({redirectTo:"/main"})
     })
 

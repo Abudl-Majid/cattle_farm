@@ -15,6 +15,10 @@
     <script src="resources/app/UserListCtrl.js"></script>
     <script src="resources/app/MainCtrl.js"></script>
     <script src="resources/app/CustomerCtrl.js"></script>
+    <script src="resources/app/companyCtrl.js"></script>
+    <script src="resources/app/farmCtrl.js"></script>
+
+
 
 </head>
     <!--width="100%" border="1"style="border-collapse: collapse"
@@ -194,32 +198,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
-                    data-toggle="collapse"
-                    data-target="#ulSongs">
-                        <span class="visible-sm visible-md visible-lg">Songs&nbsp<b class="caret"></b></span>
+                    <a href="#/company">
+                        <span class="visible-sm visible-md visible-lg">Company</span>
                         <i class="glyphicon glyphicon-music visible-xs"></i>
                     </a>
-                    <div class="visible-sm visible-md visible-lg">
-                        <ul id="ulSongs" class="collapse" data-parent="#sideNavParent">
-                            <li>
-                                <a href="#">All Geners</a>
-                            </li>
-                            <li>
-                                <a href="#">Jazz</a>
-                            </li>
-                            <li>
-                                <a href="#">Country</a>
-                            </li>
-                            <li>
-                                <a href="#">Rock</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="visible-sm visible-md visible-lg">Downloads</span>
+                    <a href="#/farm">
+                        <span class="visible-sm visible-md visible-lg">Farms</span>
                         <i class="glyphicon glyphicon-download visible-xs"></i>
                     </a>
                 </li>

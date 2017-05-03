@@ -6,27 +6,12 @@ myApp.controller('UserListCtrl', ['$scope', '$http',
         $http.get('user/').success(function(data) {
             $scope.users = data;
         });
-        /*$http.post('user/').success(function(data) {
-            $scope.users = data;
-        });
-        $http.put('user/').success(function(data) {
-            $scope.users = data;
-        });
-        $http.delete('user/').success(function(data) {
-            $scope.users = data;
-        });*/
 
         $scope.orderProp = 'name';
         $scope.listView = true;
         $scope.userData = {};
         var Obj={};
-        var userObj={"id": 8,
-            "username": "tahir khan",
-            "password": "yahir",
-            "email": "tahir@vroozi.com",
-            "name": "Abdul Majid",
-            "selected": false
-    }
+
 
         $scope.btnClick = function(user) {
             console.log(user);
