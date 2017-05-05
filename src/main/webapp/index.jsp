@@ -17,6 +17,9 @@
     <script src="resources/app/CustomerCtrl.js"></script>
     <script src="resources/app/companyCtrl.js"></script>
     <script src="resources/app/farmCtrl.js"></script>
+    <script src="resources/app/productCtrl.js"></script>
+    <script src="resources/app/purchaseTypeCtrl.js"></script>
+
 
 
 
@@ -206,6 +209,18 @@
                 <li>
                     <a href="#/farm">
                         <span class="visible-sm visible-md visible-lg">Farms</span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/product">
+                        <span class="visible-sm visible-md visible-lg">Products</span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/purchaseType">
+                        <span class="visible-sm visible-md visible-lg">Purchase Type</span>
                         <i class="glyphicon glyphicon-download visible-xs"></i>
                     </a>
                 </li>

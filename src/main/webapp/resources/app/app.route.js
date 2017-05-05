@@ -22,6 +22,14 @@
                 templateUrl:"farm.jsp",
                 controller:"farmCtrl"
             })
+            .when("/product",{
+                templateUrl:"product.jsp",
+                controller:"productCtrl"
+            })
+            .when("/purchaseType",{
+                templateUrl:"purchaseType.jsp",
+                controller:"purchaseTypeCtrl"
+            })
             .otherwise({redirectTo:"/main"})
     })
 
