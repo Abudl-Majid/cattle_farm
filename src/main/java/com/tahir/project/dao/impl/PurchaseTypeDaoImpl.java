@@ -31,7 +31,7 @@ public class PurchaseTypeDaoImpl extends AbstractDao implements PurchaseTypeDao 
 
   @Override
   public void delete(Integer PurchaseTypeId) {
-    Query query = getSession().createSQLQuery("delete from PurchaseType where id = :PurchaseTypeId");
+    Query query = getSession().createSQLQuery("delete from Purchase_Type where id = :PurchaseTypeId");
     query.setInteger("PurchaseTypeId", PurchaseTypeId);
     query.executeUpdate();
   }
