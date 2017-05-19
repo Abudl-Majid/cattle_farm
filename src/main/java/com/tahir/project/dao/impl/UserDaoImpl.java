@@ -7,6 +7,7 @@ import com.tahir.project.model.User;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,7 +24,6 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     persist(User);
     return User;
   }
-
   @Override
   public User update(User User) {
     getSession().update(User);
@@ -48,5 +48,13 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
   public List<User> findAll() {
     Criteria criteria = getSession().createCriteria(User.class);
     return (List<User>) criteria.list();
+  }
+
+  @Override
+  public List login(User user) {
+    Query query = getSession().createSQLQuery(
+            "SELECT * FROM user WHERE username = '"+user.getUsername()+ "'  AND password = '"+user.getPassword()+"';");
+
+    return query.list();
   }
 }

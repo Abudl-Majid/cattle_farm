@@ -37,7 +37,9 @@ myApp.controller('productCtrl', ['$scope', '$http',
             $scope.showForm = true;
 
             if($scope.productData.id){
-                $http.put('product/',$scope.productData).success(function(data) {
+                $http
+                    .put('product/',$scope.productData)
+                    .success(function(data) {
 
                     $scope.products.forEach(function(product){
                         if(product.id == $scope.productData.id){
@@ -47,14 +49,27 @@ myApp.controller('productCtrl', ['$scope', '$http',
                         }
                     });
                     $scope.showForm = false;
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+
+
+                })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error');
 
                 });
+
             }
             else{
-                $http.post('product/',$scope.productData).success(function(data) {
+                $http
+                    .post('product/',$scope.productData)
+                    .success(function(data) {
                     $scope.products.push(data);
                     $scope.showForm = false;
-                });
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+                })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error')
+                 });
             }
 
         }
@@ -64,7 +79,7 @@ myApp.controller('productCtrl', ['$scope', '$http',
             $scope.productData = {
                 id: '',
                 productName: '',
-                productPrice: '',
+                productPrice: ''
             }
 
         }
@@ -72,7 +87,9 @@ myApp.controller('productCtrl', ['$scope', '$http',
         $scope.deleteproduct = function() {
             console.log($scope.productData);
             //$scope.showForm = true;
-            $http.delete('product/'+$scope.productData.id).success(function(data) {
+            $http
+                .delete('product/'+$scope.productData.id)
+                .success(function(data) {
                 var index=0;
                 $scope.products.forEach(function(product){
                     index = $scope.products.indexOf(product);
@@ -82,7 +99,11 @@ myApp.controller('productCtrl', ['$scope', '$http',
                     }
 
                 })
+                toastr.success('Given information has been updated successfully', 'Successfully Deleted');;
 
+            })
+                .error(function(error){
+                    toastr.error('Unknown error occured during the processing please try again', 'Error')
             });
         }
 

@@ -9,6 +9,7 @@ myApp.controller('companyCtrl', ['$scope', '$http',
         $scope.orderProp = 'name';
         $scope.listView = true;
         $scope.companyData = {};
+
         var Obj={};
 
 
@@ -35,7 +36,9 @@ myApp.controller('companyCtrl', ['$scope', '$http',
             $scope.showForm = true;
 
             if($scope.companyData.id){
-                $http.put('company/',$scope.companyData).success(function(data) {
+                $http
+                    .put('company/',$scope.companyData)
+                    .success(function(data) {
 
                     $scope.companys.forEach(function(company){
                         if(company.id == $scope.companyData.id){
@@ -44,13 +47,26 @@ myApp.controller('companyCtrl', ['$scope', '$http',
                         }
                     });
                     $scope.showForm = false;
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+
+                })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error');
 
                 });
+
             }
             else{
-                $http.post('company/',$scope.companyData).success(function(data) {
+                $http
+                    .post('company/',$scope.companyData)
+                    .success(function(data) {
                     $scope.companys.push(data);
                     $scope.showForm = false;
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+                })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error');
+
                 });
             }
 
@@ -68,7 +84,9 @@ myApp.controller('companyCtrl', ['$scope', '$http',
         $scope.deletecompany = function() {
             console.log($scope.companyData);
             //$scope.showForm = true;
-            $http.delete('company/'+$scope.companyData.id).success(function(data) {
+            $http
+                .delete('company/'+$scope.companyData.id)
+                .success(function(data) {
                 var index=0;
                 $scope.companys.forEach(function(company){
                     index = $scope.companys.indexOf(company);
@@ -78,6 +96,11 @@ myApp.controller('companyCtrl', ['$scope', '$http',
                     }
 
                 })
+                toastr.success('Given information has been deleted successfully', 'Successfully Deleted');
+
+            })
+                .error(function(error){
+                    toastr.error('Unknown error occured during the processing please try again', 'Error');
 
             });
         }

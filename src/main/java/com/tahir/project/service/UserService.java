@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface UserService {
   User save(User User);
+  boolean login(User User);
   User update(User User);
   void delete(Integer UserId);
   User findByUserId(Integer UserId);

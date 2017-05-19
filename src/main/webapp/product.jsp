@@ -1,6 +1,6 @@
 <div>
 
-    <div class="container" style="overflow-x:scroll;" ng-if="showForm !== true">
+    <div class="content-view" style="overflow-x:scroll;" ng-if="showForm !== true">
         <table  class="products table table-bordered">
             <thead>
             <tr>

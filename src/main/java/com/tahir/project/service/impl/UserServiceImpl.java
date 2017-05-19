@@ -22,8 +22,17 @@ public class UserServiceImpl implements UserService{
   UserDao dao;
 
   @Override
+
   public User save(User User) {
     return dao.save(User);
+  }
+  @Override
+  public boolean login(User user) {
+    List list=dao.login(user);
+   if(list==null || list.isEmpty() || list.size()==0){
+     return false;
+   }
+   return true;
   }
 
   @Override

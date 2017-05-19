@@ -1,16 +1,14 @@
 <div>
-    <div class="container" style="overflow-x:scroll;" ng-if="showForm !== true">
+    <div class="content-view" style="overflow-x:scroll;" ng-if="showForm !== true">
     <table  class="companys table table-bordered">
         <thead>
         <tr>
-            <th>Company Id</th>
             <th>Company Name</th>
             <th>&nbsp</th>
         </tr>
         </thead>
         <tbody>
         <tr  ng-repeat="company in companys | filter:query | orderBy:orderProp">
-            <td>{{company.id}}</td>
             <td>{{company.companyName}}</td>
             <td>
                 <div class="radio">
@@ -28,14 +26,8 @@
         <h1>Conformation Form</h1>
         <form>
             <div class="form-group">
-                <label for="CompanyId">Company Id</label>
-               <!-- <input type="hidden" id="CompanyId" placeholder="companyName" ng-model="companyData.id">-->
-                <input type="text" id="CompanyId" class="form-control"  placeholder="CompanyId" ng-model="companyData.id">
-            </div>
-
-            <div class="form-group">
                 <label for="CompanyName">Company Name</label>
-                <input type="text" id="CompanyName" class="form-control"  placeholder="Password" ng-model="companyData.companyName">
+                <input type="text" id="CompanyName" class="form-control"  placeholder="CompanyName" ng-model="companyData.companyName">
             </div>
 
             <div  ng-if="showForm == true">

@@ -45,8 +45,9 @@ myApp.controller('farmCtrl', ['$scope', '$http',
             //console.log(farmData.company);
 
             if($scope.farmData.id){
-                $http.put('farm/',$scope.farmData).success(function(data) {
-
+                $http
+                    .put('farm/',$scope.farmData)
+                    .success(function(data) {
                     $scope.farms.forEach(function(farm){
                         if(farm.id == $scope.farmData.id){
                             farm.id= $scope.farmData.id;
@@ -55,15 +56,27 @@ myApp.controller('farmCtrl', ['$scope', '$http',
                         }
                     });
                     $scope.showForm = false;
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+
+
+                })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error');
 
                 });
             }
             else{
-
-                $http.post('farm/',{"farmName": $scope.farmData.farmName, "company":{"id":$scope.farmData.company.id}}).success(function(data) {
-                    data.company.companyName=$scope.farmData.company.companyName;
+                $http
+                    .post('farm/',{"farmName": $scope.farmData.farmName, "company":{"id":$scope.farmData.company.id}})
+                    .success(function(data) {
+                    data.company.companyName = $scope.farmData.company.companyName;
                     $scope.farms.push(data);
                     $scope.showForm = false;
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+                })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error');
+
                 });
             }
 
@@ -82,7 +95,9 @@ myApp.controller('farmCtrl', ['$scope', '$http',
         $scope.deletefarm = function() {
             console.log($scope.farmData);
             //$scope.showForm = true;
-            $http.delete('farm/'+$scope.farmData.id).success(function(data) {
+            $http
+                .delete('farm/'+$scope.farmData.id)
+                .success(function(data) {
                 var index=0;
                 $scope.farms.forEach(function(farm){
                     index = $scope.farms.indexOf(farm);
@@ -92,6 +107,11 @@ myApp.controller('farmCtrl', ['$scope', '$http',
                     }
 
                 })
+                toastr.success('Given information has been updated successfully', 'Successfully Updated');
+
+            })
+                .error(function(error){
+                    toastr.error('Unknown error occured during the processing please try again', 'Error');
 
             });
         }

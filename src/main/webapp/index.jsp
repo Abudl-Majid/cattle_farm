@@ -7,8 +7,10 @@
     <script src="resources/js/myJs/angular.min.js" data-semver="1.4.9"></script>
     <script src="resources/js/myJs/angular-route.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <script src="resources/app/app.js"></script>
     <script src="resources/app/app.route.js"></script>
@@ -19,7 +21,14 @@
     <script src="resources/app/farmCtrl.js"></script>
     <script src="resources/app/productCtrl.js"></script>
     <script src="resources/app/purchaseTypeCtrl.js"></script>
-
+    <script src="resources/app/purchaseCtrl.js"></script>
+    <script src="resources/app/tagCtrl.js"></script>
+    <script src="resources/app/animalCtrl.js"></script>
+    <script src="resources/app/feedUsedCtrl.js"></script>
+    <script src="resources/app/animalPriceCtrl.js"></script>
+    <script src="resources/app/purchaseDetailCtrl.js"></script>
+    <script src="resources/app/stockCtrl.js"></script>
+    <script src="resources/app/loginCtrl.js"></script>
 
 
 
@@ -52,14 +61,19 @@
 </body>
     -->
 
-   <!-- <head>
+   <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <script src="js/jquery-3.2.1.js"> </script>
         <script src="js/bootstrap.js"> </script>
--->
+
         <style>
+
+            body {
+                overflow: hidden;
+            }
+
             .container{
                 width:100%;
             }
@@ -96,6 +110,9 @@
                 transition:left 0.4s linear;
                 -moz-transition:left 0.4s linear;
                 -webkit-transition:left 0.4s linear;
+                height: calc(100% - 60px);
+                overflow-y: scroll;
+                overflow-x: hidden;
             }
             .my-nav-wrapper ul{
                 width:11em;
@@ -140,7 +157,7 @@
             }
             @media all and (max-width:768px){
                 .my-nav-wrapper{
-                    left:-10em;
+                    left:-9em;
                 }
                 .body-content{
                     margin-left:5em;
@@ -148,7 +165,7 @@
                 .my-nav-wrapper ul li a i{
                     margin-top:-1em;
                     margin-bottom:-1em;
-                    padding-left: 9em;
+                    padding-left: 8em;
                 }
 
 
@@ -167,6 +184,12 @@
                 margin-right: 1em;
             }
 
+            .content-view {
+                overflow-y: scroll;
+                height: 400px;
+                overflow: scroll;
+            }
+
 
 
         </style>
@@ -180,7 +203,7 @@
         <nav class="my-nav-wrapper" id="sideNavParent">
             <ul>
                 <li class="my-nav-brand">
-                    <a href="index3.html" class="visible-sm visible-md visible-lg">Music</a>
+                    <a href="index3.html" class="visible-sm visible-md visible-lg">Nav. Bar</a>
                 </li>
                 <li>
                     <a href="#/main">
@@ -221,6 +244,48 @@
                 <li>
                     <a href="#/purchaseType">
                         <span class="visible-sm visible-md visible-lg">Purchase Type</span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/purchase">
+                        <span class="visible-sm visible-md visible-lg">Purchase</span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/tag">
+                        <span class="visible-sm visible-md visible-lg">Animal Tag</span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/animal">
+                        <span class="visible-sm visible-md visible-lg">Animals </span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/feedUsed">
+                        <span class="visible-sm visible-md visible-lg">Feed Used By Animal </span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/animalPrice">
+                        <span class="visible-sm visible-md visible-lg">Animal Price </span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/purchaseDetail">
+                        <span class="visible-sm visible-md visible-lg">Purchase Details</span>
+                        <i class="glyphicon glyphicon-download visible-xs"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/stock">
+                        <span class="visible-sm visible-md visible-lg">Stock</span>
                         <i class="glyphicon glyphicon-download visible-xs"></i>
                     </a>
                 </li>

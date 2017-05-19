@@ -30,6 +30,38 @@
                 templateUrl:"purchaseType.jsp",
                 controller:"purchaseTypeCtrl"
             })
+            .when("/purchase",{
+                templateUrl:"purchase.jsp",
+                controller:"purchaseCtrl"
+            })
+            .when("/tag",{
+                templateUrl:"tag.jsp",
+                controller:"tagCtrl"
+            })
+            .when("/animal",{
+                templateUrl:"animal.jsp",
+                controller:"animalCtrl"
+            })
+            .when("/feedUsed",{
+                templateUrl:"feedUsed.jsp",
+                controller:"feedUsedCtrl"
+            })
+            .when("/animalPrice",{
+                templateUrl:"animalPrice.jsp",
+                controller:"animalPriceCtrl"
+            })
+            .when("/purchaseDetail",{
+                templateUrl:"purchaseDetail.jsp",
+                controller:"purchaseDetailCtrl"
+            })
+            .when("/stock",{
+                templateUrl:"stock.jsp",
+                controller:"stockCtrl"
+            })
+            .when("/login",{
+                templateUrl:"login.jsp",
+                controller:"loginCtrl"
+            })
             .otherwise({redirectTo:"/main"})
     })
 

@@ -13,4 +13,5 @@ public interface UserDao {
   void delete(Integer UserId);
   User findByUserId(Integer UserId);
   public List<User> findAll();
+  List login(User User);
 }

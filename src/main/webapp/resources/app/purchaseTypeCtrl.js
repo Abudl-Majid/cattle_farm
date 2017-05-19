@@ -36,7 +36,9 @@ myApp.controller('purchaseTypeCtrl', ['$scope', '$http',
             $scope.showForm = true;
 
             if($scope.purchaseTypeData.id){
-                $http.put('purchaseType/',$scope.purchaseTypeData).success(function(data) {
+                $http
+                    .put('purchaseType/',$scope.purchaseTypeData)
+                    .success(function(data) {
 
                     $scope.purchaseTypes.forEach(function(purchaseType){
                         if(purchaseType.id == $scope.purchaseTypeData.id){
@@ -45,13 +47,23 @@ myApp.controller('purchaseTypeCtrl', ['$scope', '$http',
                         }
                     });
                     $scope.showForm = false;
-
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+                    })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error')
                 });
             }
             else{
-                $http.post('purchaseType/',$scope.purchaseTypeData).success(function(data) {
+                $http
+                    .post('purchaseType/',$scope.purchaseTypeData)
+                    .success(function(data) {
                     $scope.purchaseTypes.push(data);
                     $scope.showForm = false;
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+
+                })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error')
                 });
             }
 
@@ -69,7 +81,9 @@ myApp.controller('purchaseTypeCtrl', ['$scope', '$http',
         $scope.deletepurchaseType = function() {
             console.log($scope.purchaseTypeData);
             //$scope.showForm = true;
-            $http.delete('purchaseType/'+$scope.purchaseTypeData.id).success(function(data) {
+            $http
+                .delete('purchaseType/'+$scope.purchaseTypeData.id)
+                .success(function(data) {
                 var index=0;
                 $scope.purchaseTypes.forEach(function(purchaseType){
                     index = $scope.purchaseTypes.indexOf(purchaseType);
@@ -77,9 +91,11 @@ myApp.controller('purchaseTypeCtrl', ['$scope', '$http',
                         $scope.purchaseTypes.splice(index,1);
 
                     }
-
                 })
-
+                toastr.success('Given information has been updated successfully', 'Successfully Updated');
+            })
+                .error(function(error){
+                    toastr.error('Unknown error occured during the processing please try again', 'Error')
             });
         }
 

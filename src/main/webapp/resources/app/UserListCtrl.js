@@ -39,26 +39,36 @@ myApp.controller('UserListCtrl', ['$scope', '$http',
             $scope.showForm = true;
 
             if($scope.userData.id){
-              $http.put('user/',$scope.userData).success(function(data) {
-
-                $scope.users.forEach(function(user){
-                    if(user.id == $scope.userData.id){
-                        user.id= $scope.userData.id;
-                          user.username= $scope.userData.username;
-                          user.password= $scope.userData.password;
-                          user.name= $scope.userData.name;
-                          user.email= $scope.userData.email;
-                    }
-                });
-                $scope.showForm = false;
-
-              });
+              $http
+                  .put('user/',$scope.userData)
+                  .success(function(data) {
+                        $scope.users.forEach(function(user){
+                            if(user.id == $scope.userData.id){
+                                user.id= $scope.userData.id;
+                                user.username= $scope.userData.username;
+                                user.password= $scope.userData.password;
+                                user.name= $scope.userData.name;
+                                user.email= $scope.userData.email;
+                         }
+                      });
+                      $scope.showForm = false;
+                      toastr.success('Given information has been updated successfully', 'Successfully Updated');
+                  })
+                  .error(function(error){
+                      toastr.error('Unknown error occured during the processing please try again', 'Error')
+                  });
             }
             else{
-              $http.post('user/',$scope.userData).success(function(data) {
-                $scope.users.push(data);
-                $scope.showForm = false;
-              });
+              $http
+                  .post('user/',$scope.userData)
+                  .success(function(data) {
+                    $scope.users.push(data);
+                    $scope.showForm = false;
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+                  })
+                  .error(function(error){
+                      toastr.error('Unknown error occured during the processing please try again', 'Error')
+                  });
             }
 
 }
@@ -78,18 +88,23 @@ myApp.controller('UserListCtrl', ['$scope', '$http',
         $scope.deleteUser = function() {
             console.log($scope.userData);
             //$scope.showForm = true;
-            $http.delete('user/'+$scope.userData.id).success(function(data) {
-                var index=0;
-                $scope.users.forEach(function(user){
-                  index = $scope.users.indexOf(user);
-                    if(user.id == $scope.userData.id){
-                      $scope.users.splice(index,1);
+            $http
+                .delete('user/'+$scope.userData.id)
+                .success(function(data) {
+                    var index=0;
+                    $scope.users.forEach(function(user){
+                      index = $scope.users.indexOf(user);
+                        if(user.id == $scope.userData.id){
+                          $scope.users.splice(index,1);
 
-                    }
+                        }
 
+                    })
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
                 })
-
-            });
+                .error(function(error){
+                    toastr.error('Unknown error occured during the processing please try again', 'Error')
+                });
         }
 
         $scope.editUser = function(){
