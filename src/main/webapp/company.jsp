@@ -23,15 +23,14 @@
     </div>
     <!--conformation form of company-->
     <div class="container col-xs-4" ng-if="showForm === true">
-        <h1>Conformation Form</h1>
-        <form>
+        <form class="st" name="myForm">
+            <h2>Conformation Form</h2>
             <div class="form-group">
                 <label for="CompanyName">Company Name</label>
-                <input type="text" id="CompanyName" class="form-control"  placeholder="CompanyName" ng-model="companyData.companyName">
-            </div>
-
+                <input type="text" id="CompanyName" class="form-control" ng-keypress="ValidateAlpha($event)" placeholder="CompanyName" ng-model="companyData.companyName"required>
+    </div>
             <div  ng-if="showForm == true">
-                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="save()">Save</button>
             </div>
         </form>
     </div>

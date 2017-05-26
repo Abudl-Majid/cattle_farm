@@ -1,5 +1,4 @@
 <div>
-
     <div class="content-view" style="overflow-x:scroll;" ng-if="showForm !== true">
         <table  class="products table table-bordered">
             <thead>
@@ -27,20 +26,20 @@
     <!--CONFORMATION fORM sTARTS hERE-->
 
     <div class="container col-xs-4" ng-if="showForm === true">
-        <h1>Conformation Form</h1>
-        <form>
+        <form class="st" name="myForm">
+            <h2>Conformation Form</h2>
             <div class="form-group">
                 <label for="productName">Product Name</label>
                 <input type="hidden" id="productId" placeholder="productName" ng-model="productData.id">
-                <input type="text" id="productName" class="form-control"  placeholder="productName" ng-model="productData.productName">
+                <input type="text" id="productName" class="form-control"ng-keypress="ValidateAlpha($event)"  placeholder="productName" ng-model="productData.productName" required>
             </div>
 
             <div class="form-group">
                 <label for="productPrice">Product Price</label>
-                <input type="text" id="productPrice" class="form-control"  placeholder="productPrice" ng-model="productData.productPrice">
+                <input type="text" id="productPrice" class="form-control"  ng-keypress="isNumber($event)" placeholder="productPrice" ng-model="productData.productPrice" required>
             </div>
             <div  ng-if="showForm == true">
-                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+                <button type="submit" class="btn btn-primary"ng-disabled="myForm.$invalid" ng-click="save()">Save</button>
             </div>
         </form>
     </div>

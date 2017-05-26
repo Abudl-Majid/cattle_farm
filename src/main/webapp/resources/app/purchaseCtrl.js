@@ -1,63 +1,51 @@
-myApp.controller('purchaseTypeCtrl', ['$scope', '$http',
+myApp.controller('purchaseCtrl', ['$scope', '$http',
     function ($scope, $http) {
 
         $scope.showForm = false;
 
-        $http.get('purchaseType/').success(function(data) {
-            $scope.purchaseTypes = data;
+        $http.get('purchase/').success(function(data) {
+            $scope.purchases = data;
         });
 
         $scope.orderProp = 'name';
         $scope.listView = true;
-        $scope.purchaseTypeData = {};
+        $scope.purchaseData = {};
         var Obj={};
 
 
-        $scope.btnClick = function(purchaseType) {
-            console.log(purchaseType);
+        $scope.btnClick = function(purchase) {
+            console.log(purchase);
 
-            if (purchaseType.selected != false ){
-                $scope.purchaseTypeData = {
-                    id: purchaseType.id,
-                    purchaseType: purchaseType.purchaseType
+            if (purchase.selected != false ){
+                $scope.purchaseData = {
+                    id: purchase.id,
+                    purchaseDate: purchase.purchaseDate
                 }
             }
         }
         $scope.onClickOption = function() {
             if (!$scope.selected) {
 
-                alert("slect a purchaseType first");}
+                alert("slect a purchase first");}
             else {
                 $scope.showForm = false;
             }
         }
-        //updatepurchaseType Function against update button
+        //updatepurchase Function against update button
         $scope.save = function() {
             $scope.showForm = true;
 
-            if($scope.purchaseTypeData.id){
+            if($scope.purchaseData.id){
                 $http
-                    .put('purchaseType/',$scope.purchaseTypeData)
+                    .put('purchase/',$scope.purchaseData)
                     .success(function(data) {
 
-                    $scope.purchaseTypes.forEach(function(purchaseType){
-                        if(purchaseType.id == $scope.purchaseTypeData.id){
-                            purchaseType.id= $scope.purchaseTypeData.id;
-                            purchaseType.purchaseType= $scope.purchaseTypeData.purchaseType;
+                    $scope.purchases.forEach(function(purchase){
+                        if(purchase.id == $scope.purchaseData.id){
+                            purchase.id= $scope.purchaseData.id;
+                            purchase.purchaseDate= $scope.purchaseData.purchaseDate;
                         }
                     });
-                    $scope.showForm = false;
-                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
-                    })
-                    .error(function(error){
-                        toastr.error('Unknown error occured during the processing please try again', 'Error')
-                });
-            }
-            else{
-                $http
-                    .post('purchaseType/',$scope.purchaseTypeData)
-                    .success(function(data) {
-                    $scope.purchaseTypes.push(data);
                     $scope.showForm = false;
                     toastr.success('Given information has been updated successfully', 'Successfully Updated');
 
@@ -66,31 +54,43 @@ myApp.controller('purchaseTypeCtrl', ['$scope', '$http',
                         toastr.error('Unknown error occured during the processing please try again', 'Error')
                 });
             }
+            else{
+                $http.post('purchase/',$scope.purchaseData).success(function(data) {
+                    $scope.purchases.push(data);
+                    $scope.showForm = false;
+                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
+                })
+                    .error(function(error){
+                        toastr.error('Unknown error occured during the processing please try again', 'Error')
+                });
 
-        }
-        //addpurchaseType function against add button
-        $scope.addpurchaseType = function() {
-            $scope.showForm = true;
-            $scope.purchaseTypeData = {
-                id: '',
-                purchaseType: ''
             }
 
         }
-        //deletepurchaseType Function against delete button
-        $scope.deletepurchaseType = function() {
-            console.log($scope.purchaseTypeData);
+        //addpurchase function against add button
+        $scope.addpurchase = function() {
+            $scope.showForm = true;
+            $scope.purchaseData = {
+                id: '',
+                purchaseDate: ''
+            }
+
+        }
+        //deletepurchase Function against delete button
+        $scope.deletepurchase = function() {
+            console.log($scope.purchaseData);
             //$scope.showForm = true;
             $http
-                .delete('purchaseType/'+$scope.purchaseTypeData.id)
+                .delete('purchase/'+$scope.purchaseData.id)
                 .success(function(data) {
                 var index=0;
-                $scope.purchaseTypes.forEach(function(purchaseType){
-                    index = $scope.purchaseTypes.indexOf(purchaseType);
-                    if(purchaseType.id == $scope.purchaseTypeData.id){
-                        $scope.purchaseTypes.splice(index,1);
+                $scope.purchases.forEach(function(purchase){
+                    index = $scope.purchases.indexOf(purchase);
+                    if(purchase.id == $scope.purchaseData.id){
+                        $scope.purchases.splice(index,1);
 
                     }
+
                 })
                 toastr.success('Given information has been updated successfully', 'Successfully Updated');
             })
@@ -99,7 +99,7 @@ myApp.controller('purchaseTypeCtrl', ['$scope', '$http',
             });
         }
 
-        $scope.editpurchaseType = function(){
+        $scope.editpurchase = function(){
             $scope.showForm = true;
         }
         $scope.isNumber=function($event) {

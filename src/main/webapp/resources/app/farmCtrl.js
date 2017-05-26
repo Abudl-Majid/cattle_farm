@@ -119,6 +119,22 @@ myApp.controller('farmCtrl', ['$scope', '$http',
         $scope.editfarm = function(){
             $scope.showForm = true;
         }
+        $scope.isNumber=function($event) {
+            var charCode = ($event.which) ? $event.which : $event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                $event.preventDefault();
+                alert("Only Numarics Are Allowed");
+                return false;
+            }
+        }
+        $scope.ValidateAlpha = function ($event) {
+            var keyCode = ($event.which) ? $event.which : $eventt.keyCode
+            if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32){
+                alert("Only Alphabets Are Allowed");
+                event.preventDefault();
+                return false;
+            }
+        }
 
 
     }]);

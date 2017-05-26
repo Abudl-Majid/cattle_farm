@@ -25,17 +25,15 @@
     </div>
 
         <!--conformation form starts here-->
-
     <div class="container col-xs-4" ng-if="showForm === true">
-    <h1>Conformation Form</h1>
-    <form>
+    <h2>Conformation Form</h2>
+    <form name="myForm">
+        <div class="st">
         <div class="form-group">
             <label for="farmName">Farm Name</label>
             <!--<input type="hidden" id="farmId" placeholder="farmName" ng-model="farmData.id">-->
-            <input type="text" id="farmName" class="form-control"  placeholder="farmName" ng-model="farmData.farmName">
+            <input type="text" id="farmName" class="form-control"  ng-keypress="ValidateAlpha($event)"  maxlength="10" placeholder="farmName" ng-model="farmData.farmName" required>
         </div>
-
-
         <div class="form-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ farmData.company.companyName || 'Select Company' }} <span class="caret"></span>
@@ -44,9 +42,9 @@
                 <li ng-repeat="company  in companys"><a ng-click="farmData.company = company">{{company.companyName}}</a></li>
             </ul>
         </div>
-
         <div  ng-if="showForm == true">
-            <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="save()">Save</button>
+        </div>
         </div>
     </form>
     </div>
@@ -59,9 +57,7 @@
     </div>
 </div>
 <style>
-    div.xyz *{
-        margin:100px;
-    }
+
     th{
         text-align:center;
         height:50px;

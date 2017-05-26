@@ -38,7 +38,7 @@ myApp.controller('UserListCtrl', ['$scope', '$http',
         $scope.save = function() {
             $scope.showForm = true;
 
-            if($scope.userData.id){
+            if($scope.userData.id && $valid){
               $http
                   .put('user/',$scope.userData)
                   .success(function(data) {
@@ -59,16 +59,18 @@ myApp.controller('UserListCtrl', ['$scope', '$http',
                   });
             }
             else{
-              $http
-                  .post('user/',$scope.userData)
-                  .success(function(data) {
-                    $scope.users.push(data);
-                    $scope.showForm = false;
-                    toastr.success('Given information has been updated successfully', 'Successfully Updated');
-                  })
-                  .error(function(error){
-                      toastr.error('Unknown error occured during the processing please try again', 'Error')
-                  });
+                if($valid){
+                  $http
+                      .post('user/',$scope.userData)
+                      .success(function(data) {
+                        $scope.users.push(data);
+                        $scope.showForm = false;
+                        toastr.success('Given information has been updated successfully', 'Successfully Updated');
+                      })
+                      .error(function(error){
+                          toastr.error('Unknown error occured during the processing please try again', 'Error')
+                      });
+                }
             }
 
 }
@@ -82,7 +84,6 @@ myApp.controller('UserListCtrl', ['$scope', '$http',
             name: '',
             email: ''
           }
-
         }
         //deleteUser Function against delete button
         $scope.deleteUser = function() {
@@ -109,5 +110,22 @@ myApp.controller('UserListCtrl', ['$scope', '$http',
 
         $scope.editUser = function(){
             $scope.showForm = true;
+        }
+        // FORM FIELD VALIDATION STARTS HERE
+        $scope.isNumber=function($event) {
+            var charCode = ($event.which) ? $event.which : $event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                $event.preventDefault();
+                alert("Only Numarics Are Allowed");
+                return false;
+            }
+        }
+        $scope.ValidateAlpha = function ($event) {
+            var keyCode = ($event.which) ? $event.which : $eventt.keyCode
+            if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32){
+                alert("Only Alphabets Are Allowed");
+                event.preventDefault();
+                return false;
+            }
         }
     }]);

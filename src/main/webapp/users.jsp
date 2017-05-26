@@ -36,33 +36,31 @@
         </form>
         -->
     </div>
-
-
-    <div class="container col-xs-4" ng-if="showForm === true">
-        <h1>Conformation Form</h1>
-        <form>
+    <div class="container col-xs-4 " ng-if="showForm === true">
+        <form class="st" name="myForm" ng-submi="save(myFrom.$valid)">
+            <h2>Conformation Form</h2>
             <div class="form-group">
                 <label for="UserName">User Name</label>
                 <input type="hidden" id="userId" placeholder="UserName" ng-model="userData.id">
-                <input type="text" id="UserName" class="form-control"  placeholder="UserName" ng-model="userData.username">
+                <input type="text" id="UserName" class="form-control" maxlength="10" ng-keypress="ValidateAlpha($event)" placeholder="UserName" ng-model="userData.username" required>
             </div>
 
             <div class="form-group">
                 <label for="Password">User Paasword</label>
-                <input type="text" id="Password" class="form-control"  placeholder="Password" ng-model="userData.password">
+                <input type="password" id="Password" class="form-control" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" placeholder="Password" ng-model="userData.password">
             </div>
 
             <div class="form-group">
                 <label for="Name">Name</label>
-                <input type="text" id="Name" class="form-control"  placeholder="Name" ng-model="userData.name">
+                <input type="text" id="Name" class="form-control" ng-keypress="ValidateAlpha($event)"  placeholder="Name" ng-model="userData.name" required>
             </div>
 
             <div class="form-group ">
                 <label for="Email">User Email</label>
-                <input type="text" id="Email" class="form-control"  placeholder="Email" ng-model="userData.email">
+                <input type="email" id="Email" class="form-control"  placeholder="Email" ng-model="userData.email" required>
             </div>
             <div  ng-if="showForm == true">
-                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="save()">Save</button>
             </div>
         </form>
     </div>

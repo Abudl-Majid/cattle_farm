@@ -186,9 +186,20 @@
 
             .content-view {
                 overflow-y: scroll;
-                height: 400px;
+                height: 500px;
                 overflow: scroll;
             }
+            .st{
+                margin-right: auto;
+                width:30%;
+                padding:2em;
+                border-radius: 5px;
+                height: 100%;
+            }
+            div.xyz *{
+                margin:100px;
+            }
+
 
 
 

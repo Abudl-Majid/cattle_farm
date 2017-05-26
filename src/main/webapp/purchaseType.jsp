@@ -1,5 +1,4 @@
 <div>
-
     <div class="content-view" style="overflow-x:scroll;" ng-if="showForm !== true">
         <table  class="purchaseTypes table table-bordered">
             <thead>
@@ -27,15 +26,15 @@
 
 
     <div class="container col-xs-4" ng-if="showForm === true">
-        <h1>Conformation Form</h1>
-        <form>
+        <form class="st" name="myForm">
+            <h2>Conformation Form</h2>
             <div class="form-group">
                 <label for="purchaseType">Purchase Type</label>
                 <input type="hidden" id="purchaseTypeId" placeholder="purchaseType" ng-model="purchaseTypeData.id">
-                <input type="text" id="purchaseType" class="form-control"  placeholder="purchaseType" ng-model="purchaseTypeData.purchaseType">
+                <input type="text" id="purchaseType" class="form-control" ng-keypress="ValidateAlpha($event)"  placeholder="purchaseType" ng-model="purchaseTypeData.purchaseType" required>
             </div>
             <div  ng-if="showForm == true">
-                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="save()">Save</button>
             </div>
         </form>
     </div>
